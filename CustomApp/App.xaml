@@ -1,0 +1,10 @@
+﻿<mvvm:OptecApp x:Class="CustomApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CustomApp"
+             xmlns:mvvm="clr-namespace:Tools.Mvvm;assembly=Tools.Mvvm"
+             StartupUri="MainWindow.xaml">
+    <mvvm:OptecApp.Resources>
+
+    </mvvm:OptecApp.Resources>
+</mvvm:OptecApp>
