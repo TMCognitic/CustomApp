@@ -1,9 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using BStorm.Tools.Encryptions.Cryptography.Symmetric;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using System.Data;
 using System.Windows;
 using Tools.Mvvm;
+
+using Res = CustomApp.Properties.Resources;
 
 namespace CustomApp
 {
@@ -19,7 +22,20 @@ namespace CustomApp
 
         public App()
         {
-            Console.WriteLine(Configuration["Test"]);
+            string? config = Configuration["Config"];
+
+            if (string.IsNullOrWhiteSpace(config))
+            {
+                MessageBox.Show("No Config Detected");
+                Current.Shutdown();
+            }
+
+            byte[] vector = Res.vector;
+            byte[] key = Res.key;
+
+            AesEncryption aesEncryption = new AesEncryption(key, vector);
+
+            Console.WriteLine(aesEncryption.Decrypt(config!));
             Console.WriteLine(ServiceProvider.GetService<IConfiguration>());
         }
     }

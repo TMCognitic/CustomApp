@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Windows;
 
 namespace Tools.Mvvm
 {
-    public abstract class OptecApp : Application
+    public abstract class OptecApp : Application, IOptecApp
     {
         public IServiceProvider ServiceProvider { get; }
         public IConfiguration Configuration { get; }
